@@ -1,11 +1,19 @@
 #include<iostream>
+#include<comandos.h>
+#include<string.h>
 
 using namespace std;
 
-int main(){
-
-    cout << "commit de prueba" <<endl;
-
+int main(argv, argc[]){
+    string ingresa;
+    string comandos;
+    string archivo;
+    cout << "$ " ;
+    cin>>ingresa;
+    
+    
+    
+    return 0;
 }
 
 
