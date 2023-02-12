@@ -98,7 +98,7 @@ bool encontrarC(char comando[200]){
 		cout<<endl<<"comentario : "<<apu;
 	}
 	else{
-		flag=false;
+		flag=false;// se dice que no encontro el comando 
 	}
 	
 	return flag;
