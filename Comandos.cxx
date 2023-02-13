@@ -1,21 +1,15 @@
-#ifndef COMANDOS_H
-#define COMANDOS_H
+#include "Comandos.h"
 #include <iostream>
+#include <string.h>
+
 using namespace std;
 
-class Comandos{
-	private:
-		string nombre;
-	public:
-		Comandos();
-		bool encontrarC(char comando[200]);
-		string getNombre();
-		void setNombre(string nombre);
+Comandos::Comandos(){
 
-};
+	this -> nombre = "";
+}
 
-/*
-bool encontrarC(char comando[200]){
+bool Comandos::encontrarC(char comando[200]){
 	bool flag=true;
 	char *apu;
 	int c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12;
@@ -114,7 +108,11 @@ bool encontrarC(char comando[200]){
 	
 	return flag;
 }
-*/
-#include "Comandos.cxx"
-#endif
 
+void Comandos::setNombre(string nombre){
+    this -> nombre = nombre;
+}
+
+string Comandos::getNombre(){
+    return nombre;
+}

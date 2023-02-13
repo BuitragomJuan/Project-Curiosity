@@ -1,17 +1,24 @@
 #include<iostream>
-#include<comandos.h>
+#include "Comandos.h"
 #include<string.h>
 
 using namespace std;
 
-int main(argv, argc[]){
+int main(int argc, char *argv[]){
+
     string ingresa;
     string comandos;
     string archivo;
-    cout << "$ " ;
-    cin>>ingresa;
-    
-    
+    Comandos comi;
+
+    do{
+        cout << "$" ;
+        cin>>ingresa;
+
+        comi.setNombre(ingresa);
+        cout << comi.getNombre();
+
+    }while(ingresa != "salir");
     
     return 0;
 }
