@@ -8,7 +8,7 @@ class Comandos{
 		string nombre;
 	public:
 		Comandos();
-		bool encontrarC(char comando[200]);
+		bool encontrarC();
 		string getNombre();
 		void setNombre(string nombre);
 
@@ -115,6 +115,6 @@ bool encontrarC(char comando[200]){
 	return flag;
 }
 */
-#include "Comandos.cxx"
+//#include "Comandos.cxx"
 #endif
 
