@@ -3,17 +3,20 @@
 #include <string.h>
 
 using namespace std;
-
+ 
 Comandos::Comandos(){
 
 	this -> nombre = "";
 }
 
-bool Comandos::encontrarC(char comando[200]){
+bool Comandos::encontrarC(){
+
+	char *dup = strdup(this->getNombre().c_str());
+
 	bool flag=true;
 	char *apu;
 	int c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12;
-	apu=strtok(comando," ");
+	apu=strtok(dup," ");
 	//se dividio el string en varios con division por espacios
 	c1=strcmp("cargar_comandos",(apu));
 	c2=strcmp("cargar_elementos",(apu));
@@ -28,7 +31,6 @@ bool Comandos::encontrarC(char comando[200]){
 	c10=strcmp("crear_mapa",(apu));
 	c11=strcmp("ruta_mas_larga",(apu));
 	//se comparo con cada comando y se guardo en las variables enteras
-	
 	
 	if(c1==0){
 		apu=strtok(NULL," ");

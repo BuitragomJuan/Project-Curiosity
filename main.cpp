@@ -18,6 +18,7 @@ int main(int argc, char *argv[]){
         comi.setNombre(ingresa);
         cout << comi.getNombre();
 
+        comi.encontrarC();
     }while(ingresa != "salir");
     
     return 0;
