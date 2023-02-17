@@ -115,6 +115,6 @@ bool encontrarC(char comando[200]){
 	return flag;
 }
 */
-//#include "Comandos.cxx"
+#include "Comandos.cxx"
 #endif
 

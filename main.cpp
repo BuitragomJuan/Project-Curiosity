@@ -1,6 +1,7 @@
 #include<iostream>
 #include "Comandos.h"
 #include<string.h>
+#include <string>
 
 using namespace std;
 
@@ -10,16 +11,18 @@ int main(int argc, char *argv[]){
     string comandos;
     string archivo;
     Comandos comi;
+    bool seguir = false;
 
     do{
+        cout <<endl;
         cout << "$" ;
-        cin>>ingresa;
+        getline(cin.ignore(0), ingresa, '\n');
 
         comi.setNombre(ingresa);
-        cout << comi.getNombre();
 
-        comi.encontrarC();
-    }while(ingresa != "salir");
+        seguir = comi.encontrarC();
+    
+    }while(seguir);
     
     return 0;
 }
