@@ -76,44 +76,83 @@ bool Comandos::encontrarC(){
 	}
 	else if(c4==0){
 		apu=strtok(NULL," ");
-		cout<<endl<<"tipo comp : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"tamaño : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"unidad med: "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"coordx : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"corrdy : "<<apu;
+		if(apu != NULL){
+			cout <<endl<<"tipo comp: "<<apu<<endl;
+			apu = strtok(NULL," ");
+			if(apu != NULL){
+				cout<<endl<<"tamaño : "<<apu;
+				apu=strtok(NULL," ");
+				if(apu != NULL){
+					cout<<endl<<"unidad med: "<<apu;
+					apu=strtok(NULL," ");
+					if(apu != NULL){
+						cout<<endl<<"coordx : "<<apu;
+						apu=strtok(NULL," ");
+						if(apu != NULL){
+							cout<<endl<<"corrdy : "<<apu;
+						}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
+
+					}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
+
+				}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
+
+			}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
+
+		}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
+		
 	}
 	else if(c5==0){
 		apu=strtok(NULL," ");
-		cout<<endl<<"tipo archivo : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"nombre archivo : "<<apu;
-	
+		if(apu != NULL){
+			cout<<endl<<"tipo archivo : "<<apu;
+			apu=strtok(NULL," ");
+			if(apu != NULL){
+				cout<<endl<<"nombre archivo : "<<apu;
+			}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
+
+		}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
+		
+		
 	}
 	else if(c6==0){
 		apu=strtok(NULL," ");
-		cout<<endl<<"coord x : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"coordy : "<<apu;
+		if(apu != NULL){
+			cout<<endl<<"coord x : "<<apu;
+			apu=strtok(NULL," ");
+			if(apu != NULL){
+				cout<<endl<<"coordy : "<<apu;
+			}else{cout<<"(error de formato) las coordenadas ingresadas no son validas."<<endl;}
+
+		}else{cout<<"(error de formato) las coordenadas ingresadas no son validas."<<endl;}
+		
 	}
 	else if(c7==0){
 		flag = false;
 	}
 	else if(c8==0){
-		//ubicar elementos
+		cout<<"se ubican los elementos"<<endl;
 	}
 	else if(c9==0){
 		apu=strtok(NULL," ");
-		cout<<endl<<"coord x1 : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"coord x2 : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"coord y1 : "<<apu;
-		apu=strtok(NULL," ");
-		cout<<endl<<"coord y2: "<<apu;
+		if(apu != NULL){
+			cout<<endl<<"coord x1 : "<<apu;
+			apu=strtok(NULL," ");
+			if(apu != NULL){
+				cout<<endl<<"coord x2 : "<<apu;
+				apu=strtok(NULL," ");
+				if(apu != NULL){
+					cout<<endl<<"coord y1 : "<<apu;
+					apu=strtok(NULL," ");
+					if(apu != NULL){
+						cout<<endl<<"coord y2: "<<apu;
+					}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
+
+				}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
+
+			} else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
+
+		}
+		
 	}
 	else if(c10==0){
 		apu=strtok(NULL," ");
