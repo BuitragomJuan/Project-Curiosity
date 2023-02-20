@@ -185,49 +185,49 @@ bool Comandos::encontrarC(){
 	}
 	else if(c13 == 0){
 
-		cout<<"--- COMANDOS DE AYUDA ---"<<endl;
+		cout<<endl;
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			if(apu == "cargar_comandos"){
+			if(strcmp("cargar_comandos",(apu))==0){
 				cout<<"Carga en memoria los comandos de desplazamiento contenidos en el archivo identificado por nombre_archivo"<<endl;
 
-			}else if(*apu == c2){
-				cout<<"Carga en memoria los datos de puntos de interés o elementos contenidos en el archivo identificado por nombre_archivo"<<endl;
+			}else if(strcmp("cargar_elementos",(apu))==0){
+				cout<<"Carga en memoria los datos de puntos de interes o elementos contenidos en el archivo identificado por nombre_archivo"<<endl;
 
-			}else if(*apu == c3){
-				cout<<"Agrega el comando de movimiento descrito a la lista de comandos del robot “Curios-ity”. El movimiento puede ser de dos tipos: avanzar o girar."<<endl;
+			}else if(strcmp("agregar_movimiento",(apu))==0){
+				cout<<"Agrega el comando de movimiento descrito a la lista de comandos del robot 'Curiosity'. El movimiento puede ser de dos tipos: avanzar o girar."<<endl;
 
-			}else if(*apu == c4){
-				cout<<"Agrega el componente o elemento descrito a la lista de puntos de interés del robot “Curiosity”. El tipo de componente puede ser uno entre roca, crater, monticulo o duna. El tamaño es un valor real que da cuenta de qué tan grande es el elemento"<<endl;
+			}else if(strcmp("agregar_elemento",(apu))==0){
+				cout<<"Agrega el componente o elemento descrito a la lista de puntos de interes del robot 'Curiosity'. El tipo de componente puede ser uno entre roca, crater, monticulo o duna. El tamanio es un valor real que da cuenta de que tan grande es el elemento"<<endl;
 
-			}else if(*apu == c5){
-				cout<<"Guarda en el archivo nombre_archivo la información solicitada de acuerdo al tipo de archivo: comandos almacena en el archivo la información de comandos de movimiento y de análisis que debe ejecutar el robot, elementos almacena en el archivo la información de los componentes o puntos de interés conocidos en el suelo marciano. "<<endl;
+			}else if(strcmp("guardar",(apu))==0){
+				cout<<"Guarda en el archivo nombre_archivo la informacion solicitada de acuerdo al tipo de archivo: comandos almacena en el archivo la informacion de comandos de movimiento y de analisis que debe ejecutar el robot, elementos almacena en el archivo la informacion de los componentes o puntos de interes conocidos en el suelo marciano. "<<endl;
 
-			}else if(*apu == c6){
-				cout<<"Permite simular el resultado de los comandos de movimiento que se enviarán al robot 'Curiosity' desde la Tierra, facilitando asi la validación de la nueva posición en la que podría ubicarse."<<endl;
+			}else if(strcmp("simular_comandos",(apu))==0){
+				cout<<"Permite simular el resultado de los comandos de movimiento que se enviaran al robot 'Curiosity' desde la Tierra, facilitando asi la validacion de la nueva posicion en la que podria ubicarse."<<endl;
 
-			}else if(*apu == c7){
+			}else if(strcmp("salir",(apu))==0){
 				cout<<"comando para salir del programa"<<endl;
 
-			}else if(*apu == c8){
-				cout<<"El comando debe utilizar la información de puntos de interés almacenada en memoria para ubicarlos en una estructura de datos jerárquica adecuada, que permita luego realizar consultas geográficas sobre estos elementos."<<endl;
+			}else if(strcmp("ubicar_elementos",(apu))==0){
+				cout<<"El comando debe utilizar la informacion de puntos de interes almacenada en memoria para ubicarlos en una estructura de datos jerarquica adecuada, que permita luego realizar consultas geograficas sobre estos elementos."<<endl;
 
-			}else if(*apu == c9){
-				cout<<"Permite utilizar la estructura creada con el comando cargar_elementos para retornar una lista de los componentes o elementos que están dentro del cuadrante geográfico descrito por los límites de coordenadas en x y y."<<endl;
+			}else if(strcmp("en_cuadrante",(apu))==0){
+				cout<<"Permite utilizar la estructura creada con el comando cargar_elementos para retornar una lista de los componentes o elementos que estan dentro del cuadrante geografico descrito por los limites de coordenadas en x y y."<<endl;
 
-			}else if(*apu == c10){
-				cout<<"El comando debe utilizar la información de puntos de interés almacenada en memoria para ubicarlos en una estructura no lineal y conectarlos entre sí teniendo en cuenta el coeficiente de conectividad dado."<<endl;
+			}else if(strcmp("crear_mapa",(apu))==0){
+				cout<<"El comando debe utilizar la informacion de puntos de interes almacenada en memoria para ubicarlos en una estructura no lineal y conectarlos entre si teniendo en cuenta el coeficiente de conectividad dado."<<endl;
 
-			}else if(*apu == c11){
-				cout<<"Con el mapa ya creado, el comando permite identificar los dos componentes más alejados entre sí de acuerdo a las conexiones generadas. Es importante aclarar que el comando retorna los elementos más alejados de acuerdo a las conexiones que se encuentran en el mapa, no los elementos que estén a mayor distancia euclidiana entre sí."<<endl;
+			}else if(strcmp("ruta_mas_larga",(apu))==0){
+				cout<<"Con el mapa ya creado, el comando permite identificar los dos componentes mas alejados entre si de acuerdo a las conexiones generadas. Es importante aclarar que el comando retorna los elementos mas alejados de acuerdo a las conexiones que se encuentran en el mapa, no los elementos que esten a mayor distancia euclidiana entre si."<<endl;
 
-			}else if(*apu == c12){
-				cout<<"Agrega el comando de análisis descrito a la lista de comandos del robot “Curiosity”. El análisis puede ser de tres tipos: fotografiar, composicion o perforar. El objeto es el nombre del elemento que se quiere analizar (roca, arena, monticulo, ...)."<<endl;
+			}else if(strcmp("agregar_analisis",(apu))==0){
+				cout<<"Agrega el comando de analisis descrito a la lista de comandos del robot “Curiosity”. El analisis puede ser de tres tipos: fotografiar, composicion o perforar. El objeto es el nombre del elemento que se quiere analizar (roca, arena, monticulo, ...)."<<endl;
 
-			}else if (*apu == c13){
+			}else if (strcmp("ayuda",(apu))==0){
 				cout<<"comando para obtener ayudar e informacion sobre los otros comandos del aplicativo"<<endl;
 
-			}else{cout<<"el comando del que solicita ayouda no existe"<<endl;}
+			}else{cout<<"el comando del que solicita ayuda no existe"<<endl;}
 
 
 		}else{cout<<"no existe ningun comando que acompanie al comando ayuda"<<endl;}
