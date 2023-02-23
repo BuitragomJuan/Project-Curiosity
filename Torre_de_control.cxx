@@ -1,6 +1,7 @@
 #include "Torre_de_control.h"
 #include "CAnalisis.h"
 #include "CMovimientos.h"
+#include "Coordenadas.h"
 #include <queue>
 #include <iostream>
 
