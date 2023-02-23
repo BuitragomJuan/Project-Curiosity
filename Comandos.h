@@ -14,6 +14,6 @@ class Comandos{
 
 };
 
-//#include "Comandos.cxx"
+#include "Comandos.cxx"
 #endif
 
