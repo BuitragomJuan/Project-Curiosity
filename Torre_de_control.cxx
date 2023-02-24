@@ -137,6 +137,8 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
 		 }
 		archivo.close();
   		  return true;
+	
+	if
 
 }
 
