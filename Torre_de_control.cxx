@@ -36,10 +36,27 @@ bool Torre_de_control::addCmdMovimiento(CMovimientos comando, string tipo_mov , 
 
 }
 
-bool Torre_de_control::addCmdAnalisis(CAnalisis comando){
-
-    return true;
-
+bool Torre_de_control::addCmdAnalisis(CAnalisis comando, string tipo, string objeto, string comentario){
+	if( tipo =="fotografiar" || tipo=="composicion" || tipo=="perforar"){
+		comando.setTipo(tipo);
+	}
+	else 
+		return false; 
+	if (typeof(objeto) == string ){
+		comando.setObjeto(objeto);
+	}
+	else 
+		return false; 
+	if(typof (comentario) == string){
+		comando.setComentario(comentario); 
+	} 
+	else 
+		return false; 
+	
+	std:: queue< CAnalisis> Analis;
+	Analis.push(comando); 
+	
+	return true; 
 }
 
 void Torre_de_control::leerArchivoMovimiento(string filename){
