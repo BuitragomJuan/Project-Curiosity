@@ -105,9 +105,11 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
 
 }
 
-void Torre_de_control::simularComandosMov(float coord_x, float coord_y){
-
-
+void Torre_de_control::simularComandosMov(float coord_x, float coord_y; std::queue< Coordenadas > aux;){
+Coordenadas c; 
+	c.setCoord_x(coord_x);
+        c.setCoord_y(coord_y);
+        
 }
 
 void Torre_de_control::simularComandosAnalisis(string filename){
