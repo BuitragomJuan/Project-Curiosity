@@ -46,7 +46,8 @@ bool Torre_de_control::guardarArchivoElementos(string filename){
 
 }
 
-void Torre_de_control::simularComandosMov(string filename){
+void Torre_de_control::simularComandosMov(float coord_x, float coord_y){
+
 
 }
 
