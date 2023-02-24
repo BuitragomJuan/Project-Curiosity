@@ -3,6 +3,7 @@
 #include <string.h>
 #include <cstring>
 #include <bits/stdc++.h>
+#include "CAnalisis.h"
 
 using namespace std;
  
@@ -39,10 +40,13 @@ bool Comandos::encontrarC(){
 		
 		apu = strtok(NULL," ");
 		
-		if(apu != NULL)
+		if(apu != NULL){
 			cout<<endl<<"nombre archivo : "<<apu;
-		else
-			cout<<"no se encuentra o no puede leerse";
+			this -> tc.leerArchivoMovimiento(apu);
+			cout << "comandos de movimiento del archivo cargardos en memoria" <<endl;
+
+		}else{cout<<"no se encuentra o no puede leerse";}
+			
 		
 	}
 	else if(c2==0){
@@ -56,17 +60,29 @@ bool Comandos::encontrarC(){
 	}	
 	else if(c3==0){
 
+		CMovimientos cm;
+
 		apu=strtok(NULL," ");
 		if(apu != NULL){
 			cout<<endl<<"tipo movimiento : "<<apu;
+			string tipo = apu;
 			apu = strtok(NULL, " ");
 
 			if(apu != NULL){
 				cout<<endl<<"magnitud : "<<apu;
+				float magn = atof(apu);
 				apu=strtok(NULL," ");
 
 				if(apu != NULL){
 					cout<<endl<<"unidad medida : "<<apu;
+					string um = apu;
+
+					cm.setTipo(tipo);
+					cm.setMagnitud(magn);
+					cm.setUnidadM(um);
+					this -> tc.addCmdMovimiento(cm);
+					cout << "comando de movimiento agregado correctamente a memoria" <<endl;
+
 				}else{cout<<"la informacion del movimiento no corresponde a los datos esperados (tipo, magnitud, unidad)."<<endl;}
 
 			}else{cout<<"la informacion del movimiento no corresponde a los datos esperados (tipo, magnitud, unidad)."<<endl;}
@@ -105,6 +121,25 @@ bool Comandos::encontrarC(){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
 			cout<<endl<<"tipo archivo : "<<apu;
+
+			if(strcmp("comandos",(apu))){
+
+				apu=strtok(NULL," ");
+				if(apu != NULL){
+					cout<<endl<<"nombre archivo : "<<apu;
+					tc.guardarArchivoMovimiento(apu);
+					cout <<"comandos guardados en el archivo exitosamente"<<endl;
+				
+				}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
+
+				
+
+			}
+			else if(strcmp("elementos",(apu))){
+
+			
+			}else{cout <<"el tipo de archivo ingresado no es valido " <<endl;}
+
 			apu=strtok(NULL," ");
 			if(apu != NULL){
 				cout<<endl<<"nombre archivo : "<<apu;
@@ -166,17 +201,24 @@ bool Comandos::encontrarC(){
 	}
 	else if(c12==0){
 
+		CAnalisis ca;
 		apu=strtok(NULL," ");
 		if(apu != NULL){
 			cout<<endl<<"tipo analisis : "<<apu<<endl;
+			string ta = apu;
 			apu=strtok(NULL," ");
 			if(apu != NULL){
 				cout<<endl<<"objeto : "<<apu<<endl;
+				string obj = apu;
 				apu=strtok(NULL," ");
-				if(apu != NULL){
-					cout<<endl<<"comentario : "<<apu<<endl;
+				
+				string cm = apu;
+				ca.setTipo(ta);
+				ca.setObjeto(obj);
+				ca.setComentario(cm);
 
-				}else{cout<<"(Formato erroneo) La informacion del analisis no corresponde a los datos esperados (tipo, objeto, comentario)."<<endl;}
+				this ->tc.addCmdAnalisis(ca);
+				cout << "comando de analisis agregado correctamente a memoria"<<endl;
 				
 			}else{cout<<"(Formato erroneo) La informacion del analisis no corresponde a los datos esperados (tipo, objeto, comentario)."<<endl;}
 

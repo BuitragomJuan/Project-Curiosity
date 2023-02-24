@@ -4,6 +4,11 @@
 #include "Coordenadas.h"
 #include <queue>
 #include <iostream>
+#include <stdlib.h>
+#include <fstream>
+#include <string.h>
+#include <cstring>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -12,9 +17,9 @@ Torre_de_control::Torre_de_control(){
     
 }
 
-bool Torre_de_control::addCmdMovimiento(CMovimientos comando){
+void Torre_de_control::addCmdMovimiento(CMovimientos comando){
     
-    return true;
+    this -> comnds_mov.push(comando);
 
 }
 
@@ -25,20 +30,33 @@ bool Torre_de_control::addCmdAnalisis(CAnalisis comando){
 }
 
 void Torre_de_control::leerArchivoMovimiento(string filename){
+
+  CMovimientos cm;
   string nombreArchivo = filename;
-    string linea;
-    ifstream archivo(nombreArchivo.c_str());
-    if (!archivo.is_open())
-  {
+  string linea;
+  ifstream archivo(nombreArchivo.c_str());
+  
+  if (!archivo.is_open()){
     cout <<"Error al abrir "<<filename;
     return;
   }
-   if(sizeof(archivo)==0){
+
+  if(sizeof(archivo)==0){
           	cout <<"Archivo"<<filename<<"vacio\n";
 		  }
    
     while (getline(archivo, linea)) {
-        cout << "Comando : "<< linea << endl;;
+
+      char *dup = strdup(linea.c_str());
+
+        CMovimientos cm;
+        cm.setTipo(strtok(dup, " "));
+        float mag = atof(strtok(NULL, " "));
+        cm.setMagnitud(mag);
+        cm.setUnidadM(strtok(NULL, " "));
+
+        this ->addCmdMovimiento(cm);
+    
     }
     
 }
@@ -65,22 +83,41 @@ void Torre_de_control::leerArchivoElementos(string filename){
 
 }
 
-bool Torre_de_control::guardarArchivoMovimiento(string filename,queue<string> name){
-string nombreArchivo = filename;
+void Torre_de_control::guardarArchivoMovimiento(string filename){
+    
+    string nombreArchivo = filename;
     string temp;
     ofstream archivo;
 		archivo.open(nombreArchivo.c_str(), fstream::out);
-		 if (!archivo.is_open()){
-             cout <<filename<<"no se encuentra o no puede leerse";
-             return false;
-         }
+		  
+      if (!archivo.is_open()){
+          
+          cout <<filename<<"no se encuentra o no puede leerse";
+
+      }
+
+      /*
 		 while(!name.empty()){
-		 	temp=name.front();
+		 	    
+          temp=name.front();
          	archivo <<temp<<endl;
          	name.pop();
 		 }
+     */
+      while(!this ->comnds_mov.empty()){
+        
+        temp = this->comnds_mov.front().getTipo();
+        archivo << temp <<" ";
+        temp = this->comnds_mov.front().getMagnitud();
+        archivo << temp <<" ";
+        temp = this->comnds_mov.front().getUnidadM();
+        archivo << temp <<endl;
+
+        this->comnds_mov.pop();
+        
+      }
+
 		archivo.close();
-    return true;
 
 }
 
@@ -105,10 +142,11 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
 
 }
 
-void Torre_de_control::simularComandosMov(float coord_x, float coord_y; std::queue< Coordenadas > aux;){
-Coordenadas c; 
-	c.setCoord_x(coord_x);
-        c.setCoord_y(coord_y);
+void Torre_de_control::simularComandosMov(string filename ){
+    
+    cout << "aaa" <<endl;
+    
+    
         
 }
 

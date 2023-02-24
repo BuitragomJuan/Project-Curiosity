@@ -4,7 +4,7 @@
 #include "CMovimientos.h"
 #include "CAnalisis.h"
 #include "Torre_de_control.h"
-#include<string.h>
+#include <string.h>
 #include <string>
 
 using namespace std;
