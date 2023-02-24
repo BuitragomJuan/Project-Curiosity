@@ -75,7 +75,7 @@ string nombreArchivo = filename;
              return false;
          }
 		 while(!name.empty()){
-		 	temp=name.top();
+		 	temp=name.front();
          	archivo <<temp<<endl;
          	name.pop();
 		 }
@@ -96,7 +96,7 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
            return false;
           }
          while(!name.empty()){
-         	temp=name.top();
+         	temp=name.front();
          	archivo <<temp <<endl;
          	name.pop();
 		 }
