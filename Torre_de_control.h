@@ -15,8 +15,8 @@ class Torre_de_control{
         Torre_de_control();
         void leerArchivoMovimiento(string filename);
         void leerArchivoElementos(string filename);
-        bool guardarArchivoMovimiento(string filename);
-        bool guardarArchivoElementos(string filename);
+        bool guardarArchivoMovimiento(string filename,queue<string> name);
+        bool guardarArchivoElementos(string filename,queue<string> name);
         void simularComandosMov(string filename);
         void simularComandosAnalisis(string filename);
         bool addCmdMovimiento( CMovimientos comando);
