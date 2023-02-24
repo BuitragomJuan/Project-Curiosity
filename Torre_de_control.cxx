@@ -65,7 +65,7 @@ void Torre_de_control::leerArchivoElementos(string filename){
 
 }
 
-bool Torre_de_control::guardarArchivoMovimiento(string filename){
+bool Torre_de_control::guardarArchivoMovimiento(string filename,queue<string> name){
 string nombreArchivo = filename;
     string temp;
     ofstream archivo;
@@ -84,7 +84,7 @@ string nombreArchivo = filename;
 
 }
 
-bool Torre_de_control::guardarArchivoElementos(string filename){
+bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> name){
 
    string nombreArchivo = filename;
     string temp;
