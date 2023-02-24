@@ -15,9 +15,18 @@ Torre_de_control::Torre_de_control(){
 bool Torre_de_control::addCmdMovimiento(CMovimientos comando, string tipo_mov , float mag , string unidad){
     if (tipo_mov == "avanzar" || tipo_mov =="girar" ) {
 	    comando.setTipo(tipo_mov);
-	    if (typeof(mag) == float) {
-		    comando
-		    if (typeof(unidad) == string) {
+	    else
+		    return false; 
+	    }
+	if (typeof(mag) == float) {
+		comando.setMagnitud(mag); 
+		else 
+			return false; 
+	}
+        if (typeof(unidad) == string) {
+		comando.setunidadM(unidad); 
+		else 
+			return false; 
 			    std::queue< CMovimientos > Movs;
 			    Movs.push
 		    }}}
