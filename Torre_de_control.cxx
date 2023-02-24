@@ -25,24 +25,83 @@ bool Torre_de_control::addCmdAnalisis(CAnalisis comando){
 }
 
 void Torre_de_control::leerArchivoMovimiento(string filename){
-
+  string nombreArchivo = filename;
+    string linea;
+    ifstream archivo(nombreArchivo.c_str());
+    if (!archivo.is_open())
+  {
+    cout <<"Error al abrir "<<filename;
+    return;
+  }
+   if(sizeof(archivo)==0){
+          	cout <<"Archivo"<<filename<<"vacio\n";
+		  }
+   
+    while (getline(archivo, linea)) {
+        cout << "Comando : "<< linea << endl;;
+    }
+    
 }
 
 void Torre_de_control::leerArchivoElementos(string filename){
 
-    cout << filename;
+  string nombreArchivo = filename;
+    string linea;
+    ifstream archivo(nombreArchivo.c_str());
+    if (!archivo.is_open())
+  {
+    cout <<"Error al abrir "<<filename;
+    return;
+  }
+   if(sizeof(archivo)==0){
+          	cout <<"Archivo"<<filename<<"vacio\n";
+		  }
+   
+    while (getline(archivo, linea)) {
+        cout << "Comando : "<< linea << endl;;
+    }
+    
+    
 
 }
 
 bool Torre_de_control::guardarArchivoMovimiento(string filename){
-
+string nombreArchivo = filename;
+    string temp;
+    ofstream archivo;
+		archivo.open(nombreArchivo.c_str(), fstream::out);
+		 if (!archivo.is_open()){
+             cout <<filename<<"no se encuentra o no puede leerse";
+             return false;
+         }
+		 while(!name.empty()){
+		 	temp=name.top();
+         	archivo <<temp<<endl;
+         	name.pop();
+		 }
+		archivo.close();
     return true;
 
 }
 
 bool Torre_de_control::guardarArchivoElementos(string filename){
 
-    return true;
+   string nombreArchivo = filename;
+    string temp;
+    ofstream archivo;
+		// Abrimos el archivo
+		archivo.open(nombreArchivo.c_str(), fstream::out);
+		 if (!archivo.is_open()){
+           cout <<"Error al abrir "<<filename;
+           return false;
+          }
+         while(!name.empty()){
+         	temp=name.top();
+         	archivo <<temp <<endl;
+         	name.pop();
+		 }
+		archivo.close();
+  		  return true;
 
 }
 
