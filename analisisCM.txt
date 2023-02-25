@@ -1,0 +1,3 @@
+fotografiar arena 'roca_72'
+perforar roca 
+composicion monticulo 'monticulo_cuadrante_53'

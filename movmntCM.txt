@@ -1,0 +1,5 @@
+avanzar 3 cm
+girar 45 °
+avanzar 10 m
+avanzar 34 m
+girar 180 °
