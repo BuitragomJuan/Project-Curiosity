@@ -1,0 +1,3 @@
+roca 45 m 43 12
+monticulo 12 cm 90 34
+duna 657 km -85 -143

@@ -13,8 +13,7 @@ void CMovimientos::setTipo(string type){
 
 string CMovimientos::getTipo(){
 
-    //return this -> tipo;
-    return "entro en la funcion sin lios ";
+    return this -> tipo;
 }
 
 void CMovimientos::setMagnitud(float mag){

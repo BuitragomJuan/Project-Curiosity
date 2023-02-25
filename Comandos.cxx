@@ -41,9 +41,9 @@ bool Comandos::encontrarC(){
 		apu = strtok(NULL," ");
 		
 		if(apu != NULL){
-			cout<<endl<<"nombre archivo : "<<apu;
+
 			this -> tc.leerArchivoMovimiento(apu);
-			cout << "comandos de movimiento del archivo cargardos en memoria" <<endl;
+			cout << "comandos de movimiento del archivo cargados en la memoria" <<endl;
 
 		}else{cout<<"no se encuentra o no puede leerse";}
 			
@@ -52,10 +52,12 @@ bool Comandos::encontrarC(){
 	else if(c2==0){
 		apu=strtok(NULL," ");
 
-		if(apu != NULL)
-			cout<<endl<<"nombre archivo : "<<apu<<endl;
-		else
-			cout<<"el archivo no se encuentra o no puede leerse";
+		if(apu != NULL){
+
+			this ->tc.leerArchivoElementos(apu);
+			cout<<"elementos del archivo cargados en la memoria "<<endl;
+		}else{cout<<"el archivo no se encuentra o no puede leerse";}
+			
 		
 	}	
 	else if(c3==0){

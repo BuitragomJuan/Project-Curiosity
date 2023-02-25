@@ -9,8 +9,7 @@ Coordenadas::Coordenadas(){
 
 void Coordenadas::setCoord_x(float coord_x){
 
-    cout << "el numero a imprimir es: " << coord_x;
-    //this -> coord_x = coord_x;
+    this -> coord_x = coord_x;
 }
 
 void Coordenadas::setCoord_y(float coord_y){

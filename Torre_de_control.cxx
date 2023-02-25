@@ -2,6 +2,7 @@
 #include "CAnalisis.h"
 #include "CMovimientos.h"
 #include "Coordenadas.h"
+#include "Elementos.h"
 #include <queue>
 #include <iostream>
 #include <stdlib.h>
@@ -58,6 +59,22 @@ void Torre_de_control::leerArchivoMovimiento(string filename){
         this ->addCmdMovimiento(cm);
     
     }
+
+    queue<CMovimientos> aux;
+    aux = this -> comnds_mov;
+    cout << "COMANDOS DE MOVIMIENTO EN MEMORIA:" <<endl;
+
+    while( !aux.empty( ) ) {
+      
+      CMovimientos n = aux.front( );
+
+      aux.pop( );
+
+      cout << "tipo: " << n.getTipo() << endl;
+      cout <<"magnitud: "<<n.getMagnitud() <<endl;
+      cout <<"unidad de medida: " <<n.getUnidadM()<<endl;
+    }
+
     
 }
 
@@ -76,10 +93,32 @@ void Torre_de_control::leerArchivoElementos(string filename){
 		  }
    
     while (getline(archivo, linea)) {
-        cout << "Comando : "<< linea << endl;;
+
+      char *dup = strdup(linea.c_str());
+      Elementos elm;
+
+      elm.setTipo(strtok(dup, " "));
+      float sz = atof((strtok(NULL, " ")));
+      elm.setSize(sz);
+      elm.setUnidadm(strtok(NULL, " "));
+      float x = atof((strtok(NULL, " ")));
+      float y = atof((strtok(NULL, " ")));
+
+      elm.addCoords(x,y);
+
+      this ->elmnts.push_back(elm);
+
     }
-    
-    
+
+    for(int i=0; i < this->elmnts.size(); i++){
+      
+      cout<< "tipo: " << this->elmnts[i].getTipo()<<endl;
+      cout<<"size: " << this->elmnts[i].getSize()<<endl;
+      cout <<"unidad de medida: "<<this->elmnts[i].getUnidadm()<<endl; 
+      cout <<"coordenada en x: " << this->elmnts[i].getCoordx()<<endl;
+      cout <<"coordenada en y: " << this->elmnts[i].getCoordy()<<endl;
+
+    }
 
 }
 
@@ -126,7 +165,7 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
    string nombreArchivo = filename;
     string temp;
     ofstream archivo;
-		// Abrimos el archivo
+		// Abrimos el archivoo
 		archivo.open(nombreArchivo.c_str(), fstream::out);
 		 if (!archivo.is_open()){
            cout <<"Error al abrir "<<filename;
