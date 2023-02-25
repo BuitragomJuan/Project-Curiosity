@@ -2,7 +2,6 @@
 #include "CAnalisis.h"
 #include "CMovimientos.h"
 #include "Coordenadas.h"
-#include "Elementos.h"
 #include <queue>
 #include <iostream>
 #include <stdlib.h>
@@ -24,10 +23,27 @@ void Torre_de_control::addCmdMovimiento(CMovimientos comando){
 
 }
 
-bool Torre_de_control::addCmdAnalisis(CAnalisis comando){
-
-    return true;
-
+bool Torre_de_control::addCmdAnalisis(CAnalisis comando, string tipo, string objeto, string comentario){
+	if( tipo =="fotografiar" || tipo=="composicion" || tipo=="perforar"){
+		comando.setTipo(tipo);
+	}
+	else 
+		return false; 
+	if (typeof(objeto) == string ){
+		comando.setObjeto(objeto);
+	}
+	else 
+		return false; 
+	if(typof (comentario) == string){
+		comando.setComentario(comentario); 
+	} 
+	else 
+		return false; 
+	
+	std:: queue< CAnalisis> Analis;
+	Analis.push(comando); 
+	
+	return true; 
 }
 
 void Torre_de_control::leerArchivoMovimiento(string filename){
@@ -59,22 +75,6 @@ void Torre_de_control::leerArchivoMovimiento(string filename){
         this ->addCmdMovimiento(cm);
     
     }
-
-    queue<CMovimientos> aux;
-    aux = this -> comnds_mov;
-    cout << "COMANDOS DE MOVIMIENTO EN MEMORIA:" <<endl;
-
-    while( !aux.empty( ) ) {
-      
-      CMovimientos n = aux.front( );
-
-      aux.pop( );
-
-      cout << "tipo: " << n.getTipo() << endl;
-      cout <<"magnitud: "<<n.getMagnitud() <<endl;
-      cout <<"unidad de medida: " <<n.getUnidadM()<<endl;
-    }
-
     
 }
 
@@ -93,32 +93,10 @@ void Torre_de_control::leerArchivoElementos(string filename){
 		  }
    
     while (getline(archivo, linea)) {
-
-      char *dup = strdup(linea.c_str());
-      Elementos elm;
-
-      elm.setTipo(strtok(dup, " "));
-      float sz = atof((strtok(NULL, " ")));
-      elm.setSize(sz);
-      elm.setUnidadm(strtok(NULL, " "));
-      float x = atof((strtok(NULL, " ")));
-      float y = atof((strtok(NULL, " ")));
-
-      elm.addCoords(x,y);
-
-      this ->elmnts.push_back(elm);
-
+        cout << "Comando : "<< linea << endl;;
     }
-
-    for(int i=0; i < this->elmnts.size(); i++){
-      
-      cout<< "tipo: " << this->elmnts[i].getTipo()<<endl;
-      cout<<"size: " << this->elmnts[i].getSize()<<endl;
-      cout <<"unidad de medida: "<<this->elmnts[i].getUnidadm()<<endl; 
-      cout <<"coordenada en x: " << this->elmnts[i].getCoordx()<<endl;
-      cout <<"coordenada en y: " << this->elmnts[i].getCoordy()<<endl;
-
-    }
+    
+    
 
 }
 
@@ -165,14 +143,14 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
    string nombreArchivo = filename;
     string temp;
     ofstream archivo;
-		// Abrimos el archivoo
+		// Abrimos el archivo
 		archivo.open(nombreArchivo.c_str(), fstream::out);
 		 if (!archivo.is_open()){
            cout <<"Error al abrir "<<filename;
            return false;
           }
          while(!name.empty()){
-         	temp=name.front();
+         	temp=name.top();
          	archivo <<temp <<endl;
          	name.pop();
 		 }
