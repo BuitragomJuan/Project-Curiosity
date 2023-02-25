@@ -1,0 +1,7 @@
+avanzar C cm
+girar - grados
+avanzar  km
+avanzar Y m
+girar ´ grados
+avanzar B cm
+avanzar { kkm

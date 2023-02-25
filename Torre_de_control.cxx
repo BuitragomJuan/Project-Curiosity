@@ -23,27 +23,9 @@ void Torre_de_control::addCmdMovimiento(CMovimientos comando){
 
 }
 
-bool Torre_de_control::addCmdAnalisis(CAnalisis comando, string tipo, string objeto, string comentario){
-	if( tipo =="fotografiar" || tipo=="composicion" || tipo=="perforar"){
-		comando.setTipo(tipo);
-	}
-	else 
-		return false; 
-	if (typeof(objeto) == string ){
-		comando.setObjeto(objeto);
-	}
-	else 
-		return false; 
-	if(typof (comentario) == string){
-		comando.setComentario(comentario); 
-	} 
-	else 
-		return false; 
-	
-	std:: queue< CAnalisis> Analis;
-	Analis.push(comando); 
-	
-	return true; 
+void Torre_de_control::addCmdAnalisis(CAnalisis comando){
+
+
 }
 
 void Torre_de_control::leerArchivoMovimiento(string filename){
@@ -55,26 +37,28 @@ void Torre_de_control::leerArchivoMovimiento(string filename){
   
   if (!archivo.is_open()){
     cout <<"Error al abrir "<<filename;
-    return;
-  }
+  }else{
 
-  if(sizeof(archivo)==0){
+    if(sizeof(archivo)==0){
           	cout <<"Archivo"<<filename<<"vacio\n";
-		  }
-   
-    while (getline(archivo, linea)) {
+		  }else{
 
-      char *dup = strdup(linea.c_str());
+        while (getline(archivo, linea)) {
+          
+          char *dup = strdup(linea.c_str());
+          CMovimientos cm;
 
-        CMovimientos cm;
-        cm.setTipo(strtok(dup, " "));
-        float mag = atof(strtok(NULL, " "));
-        cm.setMagnitud(mag);
-        cm.setUnidadM(strtok(NULL, " "));
+          cm.setTipo(strtok(dup, " "));
+          float mag = atof(strtok(NULL, " "));
+          cm.setMagnitud(mag);
+          cm.setUnidadM(strtok(NULL, " "));
 
-        this ->addCmdMovimiento(cm);
-    
-    }
+          this ->addCmdMovimiento(cm);
+        
+        }
+      }
+
+  }
     
 }
 
@@ -83,20 +67,47 @@ void Torre_de_control::leerArchivoElementos(string filename){
   string nombreArchivo = filename;
     string linea;
     ifstream archivo(nombreArchivo.c_str());
-    if (!archivo.is_open())
-  {
+    if (!archivo.is_open()){
+
     cout <<"Error al abrir "<<filename;
     return;
-  }
-   if(sizeof(archivo)==0){
-          	cout <<"Archivo"<<filename<<"vacio\n";
-		  }
-   
-    while (getline(archivo, linea)) {
-        cout << "Comando : "<< linea << endl;;
+  }else{
+
+    if(sizeof(archivo)==0){
+      
+      cout <<"Archivo"<<filename<<"vacio\n";
+		}
+    else{
+
+      while (getline(archivo, linea)) {
+
+        char *dup = strdup(linea.c_str());
+        Elementos elm;
+
+        elm.setTipo(strtok(dup," "));
+        float sz = atof(strtok(NULL," "));
+        elm.setSize(sz);
+        elm.setUnidadm(strtok(NULL," "));
+        float x = atof(strtok(NULL," "));
+        float y = atof(strtok(NULL," "));
+
+        elm.addCoords(x,y);
+
+        this->elmnts.push_back(elm);
     }
-    
-    
+
+    }
+  }
+
+  for(int i=0; i < this->elmnts.size(); i++){
+
+    cout<<"tipo: "<<this->elmnts[i].getTipo();
+    cout<<"size: "<<this->elmnts[i].getSize();
+    cout<<"unidad de medida: "<<this->elmnts[i].getUnidadm();
+    cout<<"coordenada en x: "<<this->elmnts[i].getCoordx();
+    cout<<"coordenada en y: "<<this->elmnts[i].getCoordy();
+
+  }
 
 }
 
@@ -111,34 +122,28 @@ void Torre_de_control::guardarArchivoMovimiento(string filename){
           
           cout <<filename<<"no se encuentra o no puede leerse";
 
-      }
+      }else{
 
-      /*
-		 while(!name.empty()){
-		 	    
-          temp=name.front();
-         	archivo <<temp<<endl;
-         	name.pop();
-		 }
-     */
-      while(!this ->comnds_mov.empty()){
-        
-        temp = this->comnds_mov.front().getTipo();
-        archivo << temp <<" ";
-        temp = this->comnds_mov.front().getMagnitud();
-        archivo << temp <<" ";
-        temp = this->comnds_mov.front().getUnidadM();
-        archivo << temp <<endl;
 
-        this->comnds_mov.pop();
+        while(!this ->comnds_mov.empty()){
+          
+          temp = this->comnds_mov.front().getTipo();
+          archivo << temp <<" ";
+          temp = to_string(this->comnds_mov.front().getMagnitud());
+          archivo << temp <<" ";
+          temp = this->comnds_mov.front().getUnidadM();
+          archivo << temp <<endl;
+
+          this->comnds_mov.pop();
         
+        }
       }
 
 		archivo.close();
 
 }
 
-bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> name){
+void Torre_de_control::guardarArchivoElementos(string filename){
 
    string nombreArchivo = filename;
     string temp;
@@ -147,15 +152,10 @@ bool Torre_de_control::guardarArchivoElementos(string filename,queue<string> nam
 		archivo.open(nombreArchivo.c_str(), fstream::out);
 		 if (!archivo.is_open()){
            cout <<"Error al abrir "<<filename;
-           return false;
-          }
-         while(!name.empty()){
-         	temp=name.top();
-         	archivo <<temp <<endl;
-         	name.pop();
-		 }
+      }else{
+
+      }
 		archivo.close();
-  		  return true;
 
 }
 

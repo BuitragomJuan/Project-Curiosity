@@ -20,11 +20,11 @@ class Torre_de_control{
         void leerArchivoMovimiento(string filename);
         void leerArchivoElementos(string filename);
         void guardarArchivoMovimiento(string filename);
-        bool guardarArchivoElementos(string filename,queue<string> name);
+        void guardarArchivoElementos(string filename);
         void simularComandosMov(string filename);
         void simularComandosAnalisis(string filename);
         void addCmdMovimiento( CMovimientos comando);
-        bool addCmdAnalisis( CAnalisis comando);
+        void addCmdAnalisis( CAnalisis comando);
 
 };
 

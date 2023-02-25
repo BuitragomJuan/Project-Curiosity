@@ -1,5 +1,7 @@
-avanzar 3 cm
-girar 45 grados
-avanzar 10 m
-avanzar 34 m
-girar 180 grados
+avanzar 67.000000 cm
+girar 45.000000 grados
+avanzar 20.000000 km
+avanzar 89.000000 m
+girar 180.000000 grados
+avanzar 66.000000 cm
+avanzar 34.000000 jl

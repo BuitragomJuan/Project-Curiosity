@@ -56,6 +56,7 @@ bool Comandos::encontrarC(){
 
 			this ->tc.leerArchivoElementos(apu);
 			cout<<"elementos del archivo cargados en la memoria "<<endl;
+
 		}else{cout<<"el archivo no se encuentra o no puede leerse";}
 			
 		
@@ -124,33 +125,28 @@ bool Comandos::encontrarC(){
 		if(apu != NULL){
 			cout<<endl<<"tipo archivo : "<<apu;
 
-			if(strcmp("comandos",(apu))){
+			if((strcmp("comandos",(apu)))==0){
 
 				apu=strtok(NULL," ");
 				if(apu != NULL){
+
 					cout<<endl<<"nombre archivo : "<<apu;
 					tc.guardarArchivoMovimiento(apu);
 					cout <<"comandos guardados en el archivo exitosamente"<<endl;
 				
 				}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
 
-				
-
 			}
-			else if(strcmp("elementos",(apu))){
+			else if((strcmp("elementos",(apu)))==0){
 
 			
 			}else{cout <<"el tipo de archivo ingresado no es valido " <<endl;}
-
-			apu=strtok(NULL," ");
-			if(apu != NULL){
-				cout<<endl<<"nombre archivo : "<<apu;
-			}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
 
 		}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
 		
 		
 	}
+
 	else if(c6==0){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
