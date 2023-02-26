@@ -165,9 +165,12 @@ bool Comandos::encontrarC(){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
 			cout<<endl<<"coord x : "<<apu;
+			float x = atof(apu);
 			apu=strtok(NULL," ");
+			float y = atof(apu);
 			if(apu != NULL){
 				cout<<endl<<"coordy : "<<apu;
+				this->tc.simularComandosMov(x,y);
 			}else{cout<<"(error de formato) las coordenadas ingresadas no son validas."<<endl;}
 
 		}else{cout<<"(error de formato) las coordenadas ingresadas no son validas."<<endl;}

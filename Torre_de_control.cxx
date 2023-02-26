@@ -9,6 +9,7 @@
 #include <string.h>
 #include <cstring>
 #include <bits/stdc++.h>
+# define M_PI           3.14159265358979323846  /* pi */
 
 using namespace std;
 
@@ -209,9 +210,71 @@ void Torre_de_control::guardarArchivoElementos(string filename){
 
 }
 
-void Torre_de_control::simularComandosMov(string filename ){
+
+enum unidades{mm,cm,dc,m,dam,dm};
+void Torre_de_control::simularComandosMov(float coordx, float coordy){
+
+  //posiciones actuales del robot
+	float posactx=coordx;
+	float posacty=coordy;
+	float posfinx;
+	float posfiny;
+	float grados=0;
+	float magInter;
+	CMovimientos comandoact;
+	unidades uni;
+	
+	while(!(this->comnds_mov.empty())){
     
-    cout << "aaa" <<endl;
+    comandoact = this->comnds_mov.front();
+    
+    if(strcmp("avanzar",comandoact.getTipo().c_str())==0){ 
+      
+      if(strcmp("mm",comandoact.getUnidadM().c_str())==0)
+        uni=mm;
+        
+      if(strcmp("cm",comandoact.getUnidadM().c_str())==0)
+        uni=cm;
+      if(strcmp("m",comandoact.getUnidadM().c_str())==0)
+		    uni=m;
+	    if(strcmp("dam",comandoact.getUnidadM().c_str())==0)
+		    uni=dam;
+
+	    switch(uni){
+			    
+        case mm:
+				  magInter=comandoact.getMagnitud()/1000;
+				  break;
+			  case cm:
+					magInter=comandoact.getMagnitud()/100;
+				  break;
+			  case dm:
+					magInter=comandoact.getMagnitud()/10;
+				  break;
+			  case m:
+				  magInter=comandoact.getMagnitud();
+				  break;
+			  case dam:
+					magInter=comandoact.getMagnitud()*10;
+				  break;
+		  }
+
+	}
+	else{
+
+		if(strcmp("grados",comandoact.getUnidadM().c_str())==0)
+		  grados=comandoact.getMagnitud()*M_PI/180;	
+	}
+
+	posfinx=(magInter*cos(grados)) + posactx;
+	posfiny=(magInter*sin(grados)) + posacty;
+
+  this->comnds_mov.pop();
+	
+  }
+
+  cout<<"posicion en x final es"<<posfinx<<endl;
+	cout<<"posicion en y final es"<<posfiny<<endl;  
         
 }
 

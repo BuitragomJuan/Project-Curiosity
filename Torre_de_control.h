@@ -21,7 +21,7 @@ class Torre_de_control{
         void leerArchivoElementos(string filename);
         void guardarArchivoComandos(string filename);
         void guardarArchivoElementos(string filename);
-        void simularComandosMov(string filename);
+        void simularComandosMov(float coordx, float coordy);
         void addCmdMovimiento(string tp, float mg, string um);
         void addCmdMovimiento(CMovimientos cm); //sobrecarga
         void addCmdAnalisis( string tp, string obj, string cm);
