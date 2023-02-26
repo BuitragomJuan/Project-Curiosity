@@ -134,16 +134,6 @@ void Torre_de_control::leerArchivoElementos(string filename){
     }
   }
 
-  for(int i=0; i < this->elmnts.size(); i++){
-
-    cout<<"tipo: "<<this->elmnts[i].getTipo();
-    cout<<"size: "<<this->elmnts[i].getSize();
-    cout<<"unidad de medida: "<<this->elmnts[i].getUnidadm();
-    cout<<"coordenada en x: "<<this->elmnts[i].getCoordx();
-    cout<<"coordenada en y: "<<this->elmnts[i].getCoordy();
-
-  }
-
 }
 
 void Torre_de_control::guardarArchivoComandos(string filename){
@@ -223,7 +213,7 @@ void Torre_de_control::simularComandosMov(float coordx, float coordy){
 	float magInter;
 	CMovimientos comandoact;
 	unidades uni;
-	
+
 	while(!(this->comnds_mov.empty())){
     
     comandoact = this->comnds_mov.front();
@@ -273,8 +263,8 @@ void Torre_de_control::simularComandosMov(float coordx, float coordy){
 	
   }
 
-  cout<<"posicion en x final es"<<posfinx<<endl;
-	cout<<"posicion en y final es"<<posfiny<<endl;  
+  cout<<"posicion en x final es "<<posfinx<<endl;
+	cout<<"posicion en y final es "<<posfiny<<endl;  
         
 }
 

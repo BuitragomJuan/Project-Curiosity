@@ -43,7 +43,7 @@ bool Comandos::encontrarC(){
 		if(apu != NULL){
 
 			this -> tc.leerArchivoComandos(apu);
-			cout << "comandos de movimiento del archivo cargados en la memoria" <<endl;
+			cout << endl << "comandos contenidos en el archivo cargados en la memoria" <<endl;
 
 		}else{cout<<"no se encuentra o no puede leerse";}
 			
@@ -55,7 +55,7 @@ bool Comandos::encontrarC(){
 		if(apu != NULL){
 
 			this ->tc.leerArchivoElementos(apu);
-			cout<<"elementos del archivo cargados en la memoria "<<endl;
+			cout << endl <<"elementos del archivo cargados en la memoria "<<endl;
 
 		}else{cout<<"el archivo no se encuentra o no puede leerse";}
 			
@@ -81,7 +81,7 @@ bool Comandos::encontrarC(){
 					string um = apu;
 
 					this->tc.addCmdMovimiento(tipo,magn,um);
-					cout << "comando de movimiento agregado correctamente a memoria" <<endl;
+					cout << endl << "comando de movimiento agregado correctamente a memoria" <<endl;
 
 				}else{cout<<"la informacion del movimiento no corresponde a los datos esperados (tipo, magnitud, unidad)."<<endl;}
 
@@ -93,11 +93,10 @@ bool Comandos::encontrarC(){
 	else if(c4==0){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			cout <<endl<<"tipo comp: "<<apu<<endl;
 			string tipo = apu;
 			apu = strtok(NULL," ");
 			if(apu != NULL){
-				cout<<endl<<"tamaño : "<<apu;
+				cout<<endl<<"size: "<<apu;
 				float sz = atof(apu);
 				apu=strtok(NULL," ");
 				if(apu != NULL){
@@ -105,14 +104,15 @@ bool Comandos::encontrarC(){
 					string um = apu;
 					apu=strtok(NULL," ");
 					if(apu != NULL){
-						cout<<endl<<"coordx : "<<apu;
+						cout<<endl<<"coordenada x: "<<apu;
 						float x = atof(apu);
 						apu=strtok(NULL," ");
 						if(apu != NULL){
-							cout<<endl<<"corrdy : "<<apu;
+							cout<<endl<<"coordenada y: "<<apu<<endl;
 							float y= atof(apu);
 
 							this->tc.addCmdElemento(tipo,sz,um,x,y);
+							cout<<"elemento agregado a la memoria"<<endl;
 
 
 						}else{cout<<"(Formato erroneo) La informacion del elemento no corresponde a los datos esperados (tipo, tamaño, unidad, x, y)."<<endl;}
@@ -129,16 +129,14 @@ bool Comandos::encontrarC(){
 	else if(c5==0){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			cout<<endl<<"tipo archivo : "<<apu;
 
 			if((strcmp("comandos",(apu)))==0){
 
 				apu=strtok(NULL," ");
 				if(apu != NULL){
 
-					cout<<"nombre archivo : "<<apu<<endl;
 					tc.guardarArchivoComandos(apu);
-					cout <<"comandos guardados en el archivo exitosamente"<<endl;
+					cout <<endl<<"comandos guardados en el archivo exitosamente"<<endl;
 				
 				}else{cout<<"(No hay informacion) La informacion requerida no esta almacenada en memoria."<<endl;}
 
@@ -149,7 +147,7 @@ bool Comandos::encontrarC(){
 				if(apu != NULL){
 
 					tc.guardarArchivoElementos(apu);
-					cout<<"Elementos guardados en el archivo exitosamente"<<endl;
+					cout<<endl<<"Elementos guardados en el archivo exitosamente"<<endl;
 
 				}else{cout<<""<<endl;}
 
@@ -164,12 +162,12 @@ bool Comandos::encontrarC(){
 	else if(c6==0){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			cout<<endl<<"coord x : "<<apu;
+			cout<<endl<<"coordenada x: "<<apu;
 			float x = atof(apu);
 			apu=strtok(NULL," ");
 			float y = atof(apu);
 			if(apu != NULL){
-				cout<<endl<<"coordy : "<<apu;
+				cout<<endl<<"coordenada y: "<<apu<<endl;
 				this->tc.simularComandosMov(x,y);
 			}else{cout<<"(error de formato) las coordenadas ingresadas no son validas."<<endl;}
 
