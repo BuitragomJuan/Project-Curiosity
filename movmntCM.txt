@@ -5,3 +5,6 @@ avanzar 89.000000 m
 girar 180.000000 grados
 avanzar 66.000000 cm
 avanzar 34.000000 jl
+girar 180.000000 grados
+avanzar 360.000000 km
+avanzar 123.000000 cm

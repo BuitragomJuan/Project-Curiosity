@@ -17,20 +17,38 @@ Torre_de_control::Torre_de_control(){
     
 }
 
-void Torre_de_control::addCmdMovimiento(CMovimientos comando){
+void Torre_de_control::addCmdMovimiento(string tp, float mg, string um){
     
-    this -> comnds_mov.push(comando);
+    CMovimientos cm;
+    cm.setTipo(tp);
+    cm.setMagnitud(mg);
+    cm.setUnidadM(um);
+
+    this->comnds_mov.push(cm);
 
 }
 
-void Torre_de_control::addCmdAnalisis(CAnalisis comando){
+void Torre_de_control::addCmdMovimiento(CMovimientos comando){
+  this->comnds_mov.push(comando);
+}
 
+void Torre_de_control::addCmdAnalisis(string tp, string obj, string cm){
+
+  CAnalisis ca;
+  ca.setTipo(tp);
+  ca.setObjeto(obj);
+  ca.setComentario(cm);
+
+  this->comnds_an.push(ca);
 
 }
 
-void Torre_de_control::leerArchivoMovimiento(string filename){
+void Torre_de_control::addCmdAnalisis(CAnalisis ca){
+  this->comnds_an.push(ca);
+}
 
-  CMovimientos cm;
+void Torre_de_control::leerArchivoComandos(string filename){
+
   string nombreArchivo = filename;
   string linea;
   ifstream archivo(nombreArchivo.c_str());
@@ -46,14 +64,30 @@ void Torre_de_control::leerArchivoMovimiento(string filename){
         while (getline(archivo, linea)) {
           
           char *dup = strdup(linea.c_str());
-          CMovimientos cm;
+          char *tipo = strtok(dup, " ");
 
-          cm.setTipo(strtok(dup, " "));
-          float mag = atof(strtok(NULL, " "));
-          cm.setMagnitud(mag);
-          cm.setUnidadM(strtok(NULL, " "));
+          if((strcmp("avanzar",(tipo))==0)||(strcmp("girar",(tipo))==0)){
 
-          this ->addCmdMovimiento(cm);
+            CMovimientos cm;
+
+            cm.setTipo(tipo);
+            float mag = atof(strtok(NULL, " "));
+            cm.setMagnitud(mag);
+            cm.setUnidadM(strtok(NULL, " "));
+
+            this ->addCmdMovimiento(cm);
+
+          }else if((strcmp("fotografiar",(tipo))==0)||(strcmp("composicion",(tipo))==0)||(strcmp("perforar",(tipo))==0)){
+
+            CAnalisis ca;
+
+            ca.setTipo(tipo);
+            ca.setObjeto(strtok(NULL," "));
+            ca.setComentario(strtok(NULL," "));
+
+            this->addCmdAnalisis(ca);
+
+          }else{cout<<"comando invalido en linea: "<<linea<<endl;}
         
         }
       }
@@ -111,7 +145,7 @@ void Torre_de_control::leerArchivoElementos(string filename){
 
 }
 
-void Torre_de_control::guardarArchivoMovimiento(string filename){
+void Torre_de_control::guardarArchivoComandos(string filename){
     
     string nombreArchivo = filename;
     string temp;
@@ -154,6 +188,22 @@ void Torre_de_control::guardarArchivoElementos(string filename){
            cout <<"Error al abrir "<<filename;
       }else{
 
+        while(!this->elmnts.empty()){
+
+          temp = this->elmnts.front().getTipo();
+          archivo << temp << " ";
+          temp = to_string(this->elmnts.front().getSize());
+          archivo << temp<<" ";
+          temp = this->elmnts.front().getUnidadm();
+          archivo << temp <<" ";
+          temp = to_string(this->elmnts.front().getCoordx());
+          archivo << temp << " ";
+          temp = to_string(this->elmnts.front().getCoordy());
+          archivo << temp<<endl; 
+
+          elmnts.pop_front();
+        }
+
       }
 		archivo.close();
 
@@ -162,11 +212,18 @@ void Torre_de_control::guardarArchivoElementos(string filename){
 void Torre_de_control::simularComandosMov(string filename ){
     
     cout << "aaa" <<endl;
-    
-    
         
 }
 
-void Torre_de_control::simularComandosAnalisis(string filename){
+void Torre_de_control::addCmdElemento(string tp, float sz, string um, float x, float y){
+
+  Elementos lm;
+
+  lm.setTipo(tp);
+  lm.setSize(sz);
+  lm.setUnidadm(um);
+  lm.addCoords(x,y);
+
+  this->elmnts.push_back(lm);
 
 }

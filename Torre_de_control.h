@@ -17,14 +17,16 @@ class Torre_de_control{
 
     public:
         Torre_de_control();
-        void leerArchivoMovimiento(string filename);
+        void leerArchivoComandos(string filename);
         void leerArchivoElementos(string filename);
-        void guardarArchivoMovimiento(string filename);
+        void guardarArchivoComandos(string filename);
         void guardarArchivoElementos(string filename);
         void simularComandosMov(string filename);
-        void simularComandosAnalisis(string filename);
-        void addCmdMovimiento( CMovimientos comando);
-        void addCmdAnalisis( CAnalisis comando);
+        void addCmdMovimiento(string tp, float mg, string um);
+        void addCmdMovimiento(CMovimientos cm); //sobrecarga
+        void addCmdAnalisis( string tp, string obj, string cm);
+        void addCmdAnalisis(CAnalisis ca); //sobrecarga
+        void addCmdElemento(string tp, float size, string um, float x, float y);
 
 };
 
