@@ -35,12 +35,3 @@ string CMovimientos::getUnidadM(){
 
     return this -> unidadM;
 }
-
-void CMovimientos::setCoordenadasIniciales(float x, float y){
-
-}
-
-void CMovimientos::setCoordenadasFinales(float x, float y){
-
-
-}

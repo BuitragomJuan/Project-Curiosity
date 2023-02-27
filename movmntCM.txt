@@ -1,5 +1,6 @@
 avanzar 67.000000 cm
-girar 69 grados
-avanzar 13 m
-girar 180 grados 
-avanzar 22 dm
+girar 69.000000 grados
+avanzar 13.000000 m
+girar 180.000000 grados
+avanzar 22.000000 dm
+avanzar 20.000000 m

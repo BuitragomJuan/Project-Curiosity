@@ -23,8 +23,6 @@ class CMovimientos{
         float getMagnitud();
         void setUnidadM(string unidadM);
         string getUnidadM();
-        void setCoordenadasIniciales(float x, float y);
-        void setCoordenadasFinales(float x, float y);
 
 };
 
