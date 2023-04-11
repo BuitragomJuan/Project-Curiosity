@@ -31,6 +31,7 @@ class Torre_de_control{
         void addCmdAnalisis(CAnalisis ca); //sobrecarga
         void addCmdElemento(string tp, float size, string um, float x, float y);
         void ubicarElementos();
+        void enCuadrante(int co1, int co2, int co3, intco4); 
 
 };
 
