@@ -182,18 +182,24 @@ bool Comandos::encontrarC(){
 		this->tc.ubicarElementos();
 	}
 	else if(c9==0){
+		int co1,co2,co3,co4;
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			cout<<endl<<"coord x1 : "<<apu;
+			//cout<<endl<<"coord x1 : "<<apu;
+			co1=*apu;
 			apu=strtok(NULL," ");
 			if(apu != NULL){
-				cout<<endl<<"coord x2 : "<<apu;
+				//cout<<endl<<"coord x2 : "<<apu;
+				co2=*apu;
 				apu=strtok(NULL," ");
 				if(apu != NULL){
-					cout<<endl<<"coord y1 : "<<apu;
+					//cout<<endl<<"coord y1 : "<<apu;
+					co3=*apu;
 					apu=strtok(NULL," ");
 					if(apu != NULL){
-						cout<<endl<<"coord y2: "<<apu;
+					//	cout<<endl<<"coord y2: "<<apu;
+						co4=*apu;
+						this->tc.EnCuadrante(co1,co2,co3,co4);	
 					}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
 
 				}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
