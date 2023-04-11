@@ -281,7 +281,7 @@ void Torre_de_control::addCmdElemento(string tp, float sz, string um, float x, f
 
 }
 
-void Torre_de_control::ubicarElementos(){
+ArbolQuad Torre_de_control::ubicarElementos(){
 
   ArbolQuad* arbol = new ArbolQuad();
   punto coord;
@@ -313,6 +313,45 @@ void Torre_de_control::ubicarElementos(){
     arbol->insertar(arbol->obtenerRaiz()->obtenerDato(), node, arbol->obtenerRaiz(),0);
 
   } 
+
+
+}
+
+					// x 		  y
+void Torre_de_control::EnCruadrante(int co1,int co2,int co3,int co4,NodoQuad* nodo){
+	if (co1>co2 ||co3 >co4){
+		cout<<"formato incorrecto"<<endl;
+	}
+	else{
+		
+	 	if(nodo!=NULL){
+			 int nodo_x = nodo->obtenerDato().x;
+		        int nodo_y = nodo->obtenerDato().y;
+        		
+        
+				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
+           				if(limsup_x > nodo_x && limsup_y > nodo_y){
+						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
+					}
+       				 } 
+				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
+           				if(limsup_x > nodo_x && limsup_y > nodo_y){
+						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
+					}
+        			} 
+				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
+          				 if(limsup_x > nodo_x && limsup_y > nodo_y){
+						EnCruadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
+					}
+        			} 
+				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
+          				 if(limsup_x > nodo_x && limsup_y > nodo_y){
+						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
+					}
+        			} 
+		}
+	}
+
 
 
 }
