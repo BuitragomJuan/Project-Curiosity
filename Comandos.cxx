@@ -178,7 +178,8 @@ bool Comandos::encontrarC(){
 		flag = false;
 	}
 	else if(c8==0){
-		cout<<"se ubican los elementos"<<endl;
+		
+		this->tc.ubicarElementos();
 	}
 	else if(c9==0){
 		apu=strtok(NULL," ");

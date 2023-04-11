@@ -6,7 +6,8 @@
 #include "Torre_de_control.h"
 #include <string.h>
 #include <string>
-
+#include "NodoQuad.h"
+#include "ArbolQuad.h"
 
 using namespace std;
 

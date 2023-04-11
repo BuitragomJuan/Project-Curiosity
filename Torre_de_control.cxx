@@ -280,3 +280,39 @@ void Torre_de_control::addCmdElemento(string tp, float sz, string um, float x, f
   this->elmnts.push_back(lm);
 
 }
+
+void Torre_de_control::ubicarElementos(){
+
+  ArbolQuad* arbol = new ArbolQuad();
+  punto coord;
+  deque<Elementos> lm_aux = this->elmnts;
+  NodoQuad* root = new NodoQuad();
+
+  Elementos raiz = lm_aux.front();
+  lm_aux.pop_front();
+  
+
+  coord.x = raiz.getCoordx();
+  coord.y = raiz.getCoordy();
+
+  root->fijarDato(coord);
+  arbol->fijarRaiz(root);
+
+  deque<Elementos>::iterator it_aux;
+
+  for(it_aux = lm_aux.begin(); it_aux != lm_aux.end(); it_aux++){
+  
+    NodoQuad* node = new NodoQuad();
+    Elementos lm = (*it_aux);
+    punto info;
+
+    info.x = lm.getCoordx();
+    info.y = lm.getCoordy();
+    
+    node->fijarDato(info);
+    arbol->insertar(arbol->obtenerRaiz()->obtenerDato(), node, arbol->obtenerRaiz(),0);
+
+  } 
+
+
+}
