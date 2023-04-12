@@ -281,7 +281,7 @@ void Torre_de_control::addCmdElemento(string tp, float sz, string um, float x, f
 
 }
 
-ArbolQuad Torre_de_control::ubicarElementos(){
+void Torre_de_control::ubicarElementos(){
 
   ArbolQuad* arbol = new ArbolQuad();
   punto coord;
@@ -314,12 +314,14 @@ ArbolQuad Torre_de_control::ubicarElementos(){
 
   } 
 
+  this->setArbolElementos(arbol);
 
 }
 
 					// x 		  y
-void Torre_de_control::EnCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nodo){
-	if (co1>co2 ||co3 >co4){
+void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nodo){
+  
+	/*if (co1>co2 ||co3 >co4){
 		cout<<"formato incorrecto"<<endl;
 	}
 	else{
@@ -354,8 +356,18 @@ void Torre_de_control::EnCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nod
 					}
         			} 
 		}
-	}
+	}*/
 
 
 
+}
+
+
+void Torre_de_control::setArbolElementos(ArbolQuad* tree){
+  this->arbolElementos = tree;
+
+}
+
+ArbolQuad* Torre_de_control::getArbolElementos(){
+  return this->arbolElementos;
 }

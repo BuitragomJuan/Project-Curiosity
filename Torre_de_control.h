@@ -17,6 +17,7 @@ class Torre_de_control{
         queue<CMovimientos> comnds_mov;
         queue<CAnalisis> comnds_an;
         deque<Elementos> elmnts;
+        ArbolQuad* arbolElementos;
 
     public:
         Torre_de_control();
@@ -32,6 +33,9 @@ class Torre_de_control{
         void addCmdElemento(string tp, float size, string um, float x, float y);
         void ubicarElementos();
         void enCuadrante(int co1, int co2, int co3, int co4, NodoQuad* nodo); 
+        ArbolQuad* getArbolElementos();
+        void setArbolElementos(ArbolQuad* tree);
+
 
 };
 
