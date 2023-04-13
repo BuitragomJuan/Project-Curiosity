@@ -331,28 +331,28 @@ void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nod
 		        int nodo_y = nodo->obtenerDato().y;
         		cout<<nodo->obtenerDato()<<endl;
         
-				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
-           				if(limsup_x > nodo_x && limsup_y > nodo_y){
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
 						
-						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
+						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
 					}
        				 } 
-				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
-           				if(limsup_x > nodo_x && limsup_y > nodo_y){
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
 					  	
-						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
+						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
 					}
         			} 
-				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
-          				 if(limsup_x > nodo_x && limsup_y > nodo_y){
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
 						 
-						EnCruadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
+						enCruadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
 					}
         			} 
-				if (liminf_x < nodo_x && liminf_y < nodo_y ) {
-          				 if(limsup_x > nodo_x && limsup_y > nodo_y){
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
 						 
-						EnCruadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
+						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
 					}
         			} 
 		}
