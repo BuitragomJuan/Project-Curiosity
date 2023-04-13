@@ -334,25 +334,25 @@ void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nod
 				if (co1 < nodo_x && co3 < nodo_y ) {
            				if(co2 > nodo_x && co4 > nodo_y){
 						
-						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
 					}
        				 } 
 				if (co1 < nodo_x && co3 < nodo_y ) {
            				if(co2 > nodo_x && co4 > nodo_y){
 					  	
-						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
 					}
         			} 
 				if (co1 < nodo_x && co3 < nodo_y ) {
            				if(co2 > nodo_x && co4 > nodo_y){
 						 
-						enCruadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
+						enCuadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
 					}
         			} 
 				if (co1 < nodo_x && co3 < nodo_y ) {
            				if(co2 > nodo_x && co4 > nodo_y){
 						 
-						enCruadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
 					}
         			} 
 		}
