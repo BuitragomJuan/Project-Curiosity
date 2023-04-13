@@ -22,5 +22,5 @@ class ArbolQuad{
 		void preOrden(NodoQuad* node);
 };
 
-#include "ArbolQuad.cxx"
+//#include "ArbolQuad.cxx"
 #endif
