@@ -199,7 +199,7 @@ bool Comandos::encontrarC(){
 					if(apu != NULL){
 					//	cout<<endl<<"coord y2: "<<apu;
 						co4=*apu;
-						this->tc.EnCuadrante(co1,co2,co3,co4,this->tc.getArbolElementos().obtenerRaiz() );	
+						this->tc.enCuadrante(co1,co2,co3,co4,this->tc.getArbolElementos().obtenerRaiz() );	
 					}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
 
 				}else{cout<<"(Formato erroneo) La informacion del cuadrante no corresponde a los datos esperados (x_min, x_max, y_min, y_max)."<<endl;}
