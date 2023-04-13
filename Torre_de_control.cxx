@@ -321,7 +321,7 @@ void Torre_de_control::ubicarElementos(){
 					// x 		  y
 void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nodo){
   
-	/*if (co1>co2 ||co3 >co4){
+	if (co1>co2 ||co3 >co4){
 		cout<<"formato incorrecto"<<endl;
 	}
 	else{
@@ -356,7 +356,7 @@ void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nod
 					}
         			} 
 		}
-	}*/
+	}
 
 
 
