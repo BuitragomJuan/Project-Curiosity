@@ -39,5 +39,4 @@ class Torre_de_control{
 
 };
 
-#include "Torre_de_control.cxx"
 #endif
