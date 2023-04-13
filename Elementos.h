@@ -25,6 +25,4 @@ class Elementos {
 
 };
 
-
-#include "Elementos.cxx"
 #endif
