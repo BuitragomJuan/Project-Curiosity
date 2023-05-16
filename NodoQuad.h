@@ -42,5 +42,6 @@ class NodoQuad {
 		bool esHoja();
 };
 
+#include "NodoQuad.cxx"
 #endif
 

@@ -3,11 +3,13 @@
 #include "CMovimientos.h"
 #include "Coordenadas.h"
 #include <queue>
+#include <deque>
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
 #include <string.h>
 #include <cstring>
+#include <cmath>
 #include <bits/stdc++.h>
 # define M_PI           3.14159265358979323846  /* pi */
 
@@ -370,4 +372,46 @@ void Torre_de_control::setArbolElementos(ArbolQuad* tree){
 
 ArbolQuad* Torre_de_control::getArbolElementos(){
   return this->arbolElementos;
+}
+
+
+int Torre_de_control::crearGrafo(float coef){
+
+  int n = round(coef * this->elmnts.size());
+
+  //crear una copia de los elementos 
+  deque<Elementos> copyElmnts = this->elmnts;
+
+  //por cada elemento, calcular la distancia Euclidiana respecto a los demas y almacenarla en otra estructura
+  for(int i=0; i< copyElmnts.size(); i++){
+
+    Elementos actual = copyElmnts[i];
+    for(int j=0; j < copyElmnts.size(); j++){
+
+      float distancia = this->euclidiana(actual,copyElmnts[j]);
+      cout<<distancia<<endl;
+
+    }
+
+    for(int k=0; k < n; k++){
+
+      /*cout<<distances.top().distance<<endl;
+      distances.pop();*/
+
+    }
+
+  }
+  //teniendo la distancia euclidiana de cada elemento respecto a los demas, añadirlos a una estructura de datos
+
+  //en la matriz del mapa, añadir los n primeros
+
+  return n;
+
+}
+
+float Torre_de_control::euclidiana(Elementos elm1, Elementos elm2){
+
+  float d = sqrt(pow((elm2.getCoordx()-elm1.getCoordx()),2)+ pow((elm2.getCoordy()-elm1.getCoordy()),2));
+  return d;
+
 }

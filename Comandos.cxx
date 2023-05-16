@@ -213,6 +213,9 @@ bool Comandos::encontrarC(){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
 			cout<<endl<<"coeficiente conectividad: "<<apu<<endl;
+			float coef = atof(apu);
+			int n = this->tc.crearGrafo(coef);
+			cout << endl << "mapa cargado correctamente en memoria. cada elemento tiene "<<n<<" vecinos."<<endl;
 		}else{cout<<"formato de ingreso invalido."<<endl;}
 		
 	}
