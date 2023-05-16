@@ -17,5 +17,5 @@ class Coordenadas{
 
 };
 
-#include "Coordenadas.cxx"
+//#include "Coordenadas.cxx"
 #endif 

@@ -280,3 +280,94 @@ void Torre_de_control::addCmdElemento(string tp, float sz, string um, float x, f
   this->elmnts.push_back(lm);
 
 }
+
+void Torre_de_control::ubicarElementos(){
+
+  ArbolQuad* arbol = new ArbolQuad();
+  punto coord;
+  deque<Elementos> lm_aux = this->elmnts;
+  NodoQuad* root = new NodoQuad();
+
+  Elementos raiz = lm_aux.front();
+  lm_aux.pop_front();
+  
+
+  coord.x = raiz.getCoordx();
+  coord.y = raiz.getCoordy();
+
+  root->fijarDato(coord);
+  arbol->fijarRaiz(root);
+
+  deque<Elementos>::iterator it_aux;
+
+  for(it_aux = lm_aux.begin(); it_aux != lm_aux.end(); it_aux++){
+  
+    NodoQuad* node = new NodoQuad();
+    Elementos lm = (*it_aux);
+    punto info;
+
+    info.x = lm.getCoordx();
+    info.y = lm.getCoordy();
+    
+    node->fijarDato(info);
+    arbol->insertar(arbol->obtenerRaiz()->obtenerDato(), node, arbol->obtenerRaiz(),0);
+
+  } 
+
+  this->setArbolElementos(arbol);
+
+}
+
+					// x 		  y
+void Torre_de_control::enCuadrante(int co1,int co2,int co3,int co4,NodoQuad* nodo){
+  
+	if (co1>co2 ||co3 >co4){
+		cout<<"formato incorrecto"<<endl;
+	}
+	else{
+		
+	 	if(nodo!=NULL){
+			 int nodo_x = nodo->obtenerDato().x;
+		        int nodo_y = nodo->obtenerDato().y;
+        		cout<<nodo->obtenerDato()<<endl;
+        
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
+						
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoSupDer());
+					}
+       				 } 
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
+					  	
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoSupIzq());
+					}
+        			} 
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
+						 
+						enCuadrante(co1,co2,co3,co4, nodo->obtenerHijoInfIzq());
+					}
+        			} 
+				if (co1 < nodo_x && co3 < nodo_y ) {
+           				if(co2 > nodo_x && co4 > nodo_y){
+						 
+						enCuadrante(co1,co2,co3,co4,nodo->obtenerHijoInfDer());
+					}
+        			} 
+		}
+	}
+
+
+
+}
+
+
+void Torre_de_control::setArbolElementos(ArbolQuad* tree){
+  this->arbolElementos = tree;
+
+}
+
+ArbolQuad* Torre_de_control::getArbolElementos(){
+  return this->arbolElementos;
+}

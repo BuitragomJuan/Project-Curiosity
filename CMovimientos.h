@@ -26,5 +26,4 @@ class CMovimientos{
 
 };
 
-#include "CMovimientos.cxx"
 #endif
