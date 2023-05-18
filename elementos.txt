@@ -2,3 +2,4 @@ roca 45 m 35 40
 monticulo 32 cm 50 10
 roca 120 km 5 45
 duna 23 km 60 75
+roca 87 m 12 72

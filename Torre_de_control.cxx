@@ -379,25 +379,53 @@ int Torre_de_control::crearGrafo(float coef){
 
   int n = round(coef * this->elmnts.size());
 
+  this->mapa.resize(this->elmnts.size());
+  for(int i=0;i<this->elmnts.size();i++){
+    this->mapa[i].resize(this->elmnts.size());
+  }
+
   //crear una copia de los elementos 
   deque<Elementos> copyElmnts = this->elmnts;
   float distances[copyElmnts.size()][copyElmnts.size()];
+  
+  struct distElm {
+
+    float d;
+    int id;
+
+  };
+
+  struct CompareDistElm {
+    bool operator()(const distElm& a, const distElm& b) const {
+        // Compare based on the greater 'd' value
+        return a.d < b.d;
+    }
+};
+
+
+  
 
   //por cada elemento, calcular la distancia Euclidiana respecto a los demas y almacenarla en otra estructura
   for(int i=0; i< copyElmnts.size(); i++){
 
     Elementos actual = copyElmnts[i];
+    priority_queue<distElm, vector<distElm>, CompareDistElm> dists;
+
     for(int j=0; j < copyElmnts.size(); j++){
 
       float distancia = this->euclidiana(actual,copyElmnts[j]);
-      distances[i][j] = distancia;
-
+      //distances[i][j] = distancia;
+      distElm d;
+      d.d = distancia;
+      d.id = j;
+      dists.push(d);
     }
 
     for(int k=0; k < n; k++){
 
-      /*cout<<distances.top().distance<<endl;
-      distances.pop();*/
+      const distElm& topObject = dists.top();
+      this->mapa.at(i).at(topObject.id) = topObject.d;
+      dists.pop();
 
     }
 
