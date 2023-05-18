@@ -381,6 +381,7 @@ int Torre_de_control::crearGrafo(float coef){
 
   //crear una copia de los elementos 
   deque<Elementos> copyElmnts = this->elmnts;
+  float distances[copyElmnts.size()][copyElmnts.size()];
 
   //por cada elemento, calcular la distancia Euclidiana respecto a los demas y almacenarla en otra estructura
   for(int i=0; i< copyElmnts.size(); i++){
@@ -389,7 +390,7 @@ int Torre_de_control::crearGrafo(float coef){
     for(int j=0; j < copyElmnts.size(); j++){
 
       float distancia = this->euclidiana(actual,copyElmnts[j]);
-      cout<<distancia<<endl;
+      distances[i][j] = distancia;
 
     }
 
