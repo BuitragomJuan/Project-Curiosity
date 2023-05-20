@@ -444,3 +444,46 @@ float Torre_de_control::euclidiana(Elementos elm1, Elementos elm2){
   return d;
 
 }
+
+vector<vector<float>> Torre_de_control::getGrafo(){
+  return this->mapa;
+}
+
+void Torre_de_control::floyd_Warshall(){
+
+  vector<vector<string>> matrizPred =this->predecesores(this->getGrafo());
+
+}
+
+vector<vector<string>> Torre_de_control::predecesores(vector<vector<float>> grafo){
+
+  vector<vector<string>> matrizPred;
+
+  matrizPred.resize(grafo.size());
+
+  for(int k=0; k < matrizPred.size(); k++)
+    matrizPred[k].resize(matrizPred.size());
+  
+  
+  for(int i=0; i < grafo.size(); i++){
+
+    for(int j=0; j < grafo.at(i).size(); j++){
+
+      if(grafo.at(i).at(j) != 0){
+
+        float data = grafo.at(i).at(j);
+        matrizPred.at(i).at(j).assign(to_string(data));
+
+      }else{
+
+        matrizPred.at(i).at(j).assign("/");
+
+      }
+
+    }
+
+  }
+
+  return matrizPred;
+
+}
