@@ -11,6 +11,7 @@
 #include <cstring>
 #include <cmath>
 #include <bits/stdc++.h>
+const int INF = 1e9; 
 # define M_PI           3.14159265358979323846  /* pi */
 
 using namespace std;
@@ -452,6 +453,50 @@ vector<vector<float>> Torre_de_control::getGrafo(){
 void Torre_de_control::floyd_Warshall(){
 
   vector<vector<string>> matrizPred =this->predecesores(this->getGrafo());
+  vector<vector<float>> adj = this->mapa;
+
+  float data;
+  int V=this->mapa.size();
+  //matrizPred.resize(V);
+
+  /*for(int k=0; k < V; k++){//asignar tamaño de matriz cuadrada
+    matrizPred[k].resize(V);
+    adj[k].resize(V);
+  }
+  
+  for (int i=0;i<V;i++){
+    for(int j=0;j<V;j++){
+      
+         data= this->mapa.at(i).at(j);
+          matrizPred.at(i).at(j).assign(to_string(data));
+          adj.at(i).at(j)=data;     
+    }
+  }*/
+  
+  /*for(int k=0;k<V;k++){
+        for(int i=0;i<V;i++){
+            for(int j=0;j<V;j++){
+              
+                if(adj.at(i).at(k) + adj.at(k).at(j) < adj.at(i).at(j)){
+                    adj.at(i).at(j) = adj.at(i).at(k) + adj.at(k).at(j);
+                    matrizPred.at(i).at(j).assign(to_string(k));
+
+                  
+                }
+            }
+        }
+    }*/
+
+    for (int k = 0; k < V; ++k) {
+        for (int i = 0; i < V; ++i) {
+            for (int j = 0; j < V; ++j) {
+                if (adj[i][k] != INF && adj[k][j] != INF && adj[i][k] + adj[k][j] < adj[i][j]) {
+                    adj[i][j] = adj[i][k] + adj[k][j];
+                    matrizPred[i][j] = matrizPred[k][j];
+                }
+            }
+        }
+    }
 
 }
 
@@ -472,7 +517,7 @@ vector<vector<string>> Torre_de_control::predecesores(vector<vector<float>> graf
       if(grafo.at(i).at(j) != 0){
 
         float data = grafo.at(i).at(j);
-        matrizPred.at(i).at(j).assign(to_string(data));
+        matrizPred.at(i).at(j).assign(to_string(i));
 
       }else{
 
