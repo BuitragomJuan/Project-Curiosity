@@ -431,9 +431,6 @@ int Torre_de_control::crearGrafo(float coef){
     }
 
   }
-  //teniendo la distancia euclidiana de cada elemento respecto a los demas, añadirlos a una estructura de datos
-
-  //en la matriz del mapa, añadir los n primeros
 
   return n;
 
@@ -457,36 +454,8 @@ void Torre_de_control::floyd_Warshall(){
 
   float data;
   int V=this->mapa.size();
-  //matrizPred.resize(V);
 
-  /*for(int k=0; k < V; k++){//asignar tamaño de matriz cuadrada
-    matrizPred[k].resize(V);
-    adj[k].resize(V);
-  }
   
-  for (int i=0;i<V;i++){
-    for(int j=0;j<V;j++){
-      
-         data= this->mapa.at(i).at(j);
-          matrizPred.at(i).at(j).assign(to_string(data));
-          adj.at(i).at(j)=data;     
-    }
-  }*/
-  
-  /*for(int k=0;k<V;k++){
-        for(int i=0;i<V;i++){
-            for(int j=0;j<V;j++){
-              
-                if(adj.at(i).at(k) + adj.at(k).at(j) < adj.at(i).at(j)){
-                    adj.at(i).at(j) = adj.at(i).at(k) + adj.at(k).at(j);
-                    matrizPred.at(i).at(j).assign(to_string(k));
-
-                  
-                }
-            }
-        }
-    }*/
-
     for (int k = 0; k < V; ++k) {
         for (int i = 0; i < V; ++i) {
             for (int j = 0; j < V; ++j) {
@@ -497,6 +466,32 @@ void Torre_de_control::floyd_Warshall(){
             }
         }
     }
+
+    int coord1,coord2,act;
+    float acum=0;
+  //se encuentra el mayor y se guarda las posiciones
+  for(int i=0;i<V;i++){
+      for(int j=0;j<V;j++){
+        if(adj[i][j]>acum){
+          acum=adj[i][j];
+          coord1=i;
+          coord2=j;
+        }
+            
+      }
+   
+  }
+
+   cout<<"los puntos mas lejanos entre si son: elemento "<<this->elmnts.at(coord1).getTipo() << " y "<<this->elmnts.at(coord2).getTipo()<<" la ruta que los conecta tiene una longitud total de "<<acum<<" y pasa por los siguientes elementos: ";
+ 
+  while(strcmp(matrizPred[coord1][coord2].c_str(),to_string(coord1).c_str()) != 0){
+      cout<<this->elmnts.at(coord2).getTipo()<<" ";
+      if(strcmp(matrizPred[coord1][coord2].c_str(),"/")){break;}
+      coord2 = stof(matrizPred[coord1][coord2]);
+   
+  }
+
+  cout<<endl;
 
 }
 
