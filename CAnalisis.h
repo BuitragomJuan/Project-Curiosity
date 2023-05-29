@@ -21,4 +21,5 @@ class CAnalisis{
 
 };
 
+#include "CAnalisis.cxx"
 #endif

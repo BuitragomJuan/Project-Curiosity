@@ -1,5 +1,5 @@
-#ifndef COMANDOS_H
-#define COMANDOS_H
+#ifndef _COMANDOS_H_
+#define _COMANDOS_H_
 #include <iostream>
 #include "Torre_de_control.h"
 using namespace std;
@@ -17,5 +17,6 @@ class Comandos{
 
 };
 
+#include "Comandos.cxx"
 #endif
 

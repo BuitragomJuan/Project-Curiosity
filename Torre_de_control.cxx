@@ -3,12 +3,15 @@
 #include "CMovimientos.h"
 #include "Coordenadas.h"
 #include <queue>
+#include <deque>
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
 #include <string.h>
 #include <cstring>
+#include <cmath>
 #include <bits/stdc++.h>
+const int INF = 1e9; 
 # define M_PI           3.14159265358979323846  /* pi */
 
 using namespace std;
@@ -370,4 +373,157 @@ void Torre_de_control::setArbolElementos(ArbolQuad* tree){
 
 ArbolQuad* Torre_de_control::getArbolElementos(){
   return this->arbolElementos;
+}
+
+
+int Torre_de_control::crearGrafo(float coef){
+
+  int n = round(coef * this->elmnts.size());
+
+  this->mapa.resize(this->elmnts.size());
+  for(int i=0;i<this->elmnts.size();i++){
+    this->mapa[i].resize(this->elmnts.size());
+  }
+
+  //crear una copia de los elementos 
+  deque<Elementos> copyElmnts = this->elmnts;
+  float distances[copyElmnts.size()][copyElmnts.size()];
+  
+  struct distElm {
+
+    float d;
+    int id;
+
+  };
+
+  struct CompareDistElm {
+    bool operator()(const distElm& a, const distElm& b) const {
+        // Compare based on the greater 'd' value
+        return a.d < b.d;
+    }
+};
+
+
+  
+
+  //por cada elemento, calcular la distancia Euclidiana respecto a los demas y almacenarla en otra estructura
+  for(int i=0; i< copyElmnts.size(); i++){
+
+    Elementos actual = copyElmnts[i];
+    priority_queue<distElm, vector<distElm>, CompareDistElm> dists;
+
+    for(int j=0; j < copyElmnts.size(); j++){
+
+      float distancia = this->euclidiana(actual,copyElmnts[j]);
+      //distances[i][j] = distancia;
+      distElm d;
+      d.d = distancia;
+      d.id = j;
+      dists.push(d);
+    }
+
+    for(int k=0; k < n; k++){
+
+      const distElm& topObject = dists.top();
+      this->mapa.at(i).at(topObject.id) = topObject.d;
+      dists.pop();
+
+    }
+
+  }
+
+  return n;
+
+}
+
+float Torre_de_control::euclidiana(Elementos elm1, Elementos elm2){
+
+  float d = sqrt(pow((elm2.getCoordx()-elm1.getCoordx()),2)+ pow((elm2.getCoordy()-elm1.getCoordy()),2));
+  return d;
+
+}
+
+vector<vector<float>> Torre_de_control::getGrafo(){
+  return this->mapa;
+}
+
+void Torre_de_control::floyd_Warshall(){
+
+  vector<vector<string>> matrizPred =this->predecesores(this->getGrafo());
+  vector<vector<float>> adj = this->mapa;
+
+  float data;
+  int V=this->mapa.size();
+
+  
+    for (int k = 0; k < V; ++k) {
+        for (int i = 0; i < V; ++i) {
+            for (int j = 0; j < V; ++j) {
+                if (adj[i][k] != INF && adj[k][j] != INF && adj[i][k] + adj[k][j] < adj[i][j]) {
+                    adj[i][j] = adj[i][k] + adj[k][j];
+                    matrizPred[i][j] = matrizPred[k][j];
+                }
+            }
+        }
+    }
+
+    int coord1,coord2,act;
+    float acum=0;
+  //se encuentra el mayor y se guarda las posiciones
+  for(int i=0;i<V;i++){
+      for(int j=0;j<V;j++){
+        if(adj[i][j]>acum){
+          acum=adj[i][j];
+          coord1=i;
+          coord2=j;
+        }
+            
+      }
+   
+  }
+
+   cout<<"los puntos mas lejanos entre si son: elemento "<<this->elmnts.at(coord1).getTipo() << " y "<<this->elmnts.at(coord2).getTipo()<<" la ruta que los conecta tiene una longitud total de "<<acum<<" y pasa por los siguientes elementos: ";
+ 
+  while(strcmp(matrizPred[coord1][coord2].c_str(),to_string(coord1).c_str()) != 0){
+      cout<<this->elmnts.at(coord2).getTipo()<<" ";
+      if(strcmp(matrizPred[coord1][coord2].c_str(),"/")){break;}
+      coord2 = stof(matrizPred[coord1][coord2]);
+   
+  }
+
+  cout<<endl;
+
+}
+
+vector<vector<string>> Torre_de_control::predecesores(vector<vector<float>> grafo){
+
+  vector<vector<string>> matrizPred;
+
+  matrizPred.resize(grafo.size());
+
+  for(int k=0; k < matrizPred.size(); k++)
+    matrizPred[k].resize(matrizPred.size());
+  
+  
+  for(int i=0; i < grafo.size(); i++){
+
+    for(int j=0; j < grafo.at(i).size(); j++){
+
+      if(grafo.at(i).at(j) != 0){
+
+        float data = grafo.at(i).at(j);
+        matrizPred.at(i).at(j).assign(to_string(i));
+
+      }else{
+
+        matrizPred.at(i).at(j).assign("/");
+
+      }
+
+    }
+
+  }
+
+  return matrizPred;
+
 }

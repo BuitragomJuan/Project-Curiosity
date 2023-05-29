@@ -18,6 +18,8 @@ class Torre_de_control{
         queue<CAnalisis> comnds_an;
         deque<Elementos> elmnts;
         ArbolQuad* arbolElementos;
+        vector<vector<float>> mapa;
+        
 
     public:
         Torre_de_control();
@@ -32,11 +34,17 @@ class Torre_de_control{
         void addCmdAnalisis(CAnalisis ca); //sobrecarga
         void addCmdElemento(string tp, float size, string um, float x, float y);
         void ubicarElementos();
+        vector<vector<float>> getGrafo();
         void enCuadrante(int co1, int co2, int co3, int co4, NodoQuad* nodo); 
+        int crearGrafo(float coef);
+        float euclidiana(Elementos elm1, Elementos elm2);
         ArbolQuad* getArbolElementos();
         void setArbolElementos(ArbolQuad* tree);
+        void floyd_Warshall();
+        vector<vector<string>> predecesores(vector<vector<float>> grafo);
 
 
 };
 
+#include "Torre_de_control.cxx"
 #endif

@@ -25,5 +25,5 @@ class CMovimientos{
         string getUnidadM();
 
 };
-
+#include "CMovimientos.cxx"
 #endif

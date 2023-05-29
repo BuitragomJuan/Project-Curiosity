@@ -1,4 +1,14 @@
-roca 45 m 35 40
 monticulo 32 cm 50 10
+roca 45 m 35 40
 roca 120 km 5 45
 duna 23 km 60 75
+roca 87 m 12 72
+colina 54 km 60 120
+duna 12 m 95 76
+roca 1 km 90 43
+monte 12 km 102 423
+crater 19 km 301 424
+montana 10 m 312 42
+colina 31 m 141 5
+piedra 12 mm 30 21
+monte 104 m 0 5

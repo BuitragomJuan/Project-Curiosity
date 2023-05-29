@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
 
     do{
         cout <<endl;
-        cout << "$" ;
+        cout << "$";
         getline(cin.ignore(0), ingresa, '\n');
 
         comi.setNombre(ingresa);

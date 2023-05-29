@@ -212,12 +212,19 @@ bool Comandos::encontrarC(){
 	else if(c10==0){
 		apu=strtok(NULL," ");
 		if(apu != NULL){
-			cout<<endl<<"coeficiente conectividad: "<<apu<<endl;
+
+			float coef = atof(apu);
+			int n = this->tc.crearGrafo(coef);
+			cout << endl << "mapa cargado correctamente en memoria. cada elemento tiene "<<n<<" vecinos."<<endl;
+			
 		}else{cout<<"formato de ingreso invalido."<<endl;}
 		
 	}
 	else if(c11==0){
-		cout<<"la ruta mas larga es: *aqui pondriamos la ruta mas larga*"<<endl;
+
+			this->tc.floyd_Warshall();
+
+
 	}
 	else if(c12==0){
 
